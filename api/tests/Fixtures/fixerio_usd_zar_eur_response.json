@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "timestamp": 1709289003,
+  "base": "EUR",
+  "date": "2024-03-01",
+  "rates": {
+    "USD": 1.080106,
+    "EUR": 1,
+    "ZAR": 20.756177
+  }
+}

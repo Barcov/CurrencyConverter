@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Clients\FixerIo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get( '/exchange-rates/', function() {
+    $response = [
+        [
+            'id' => 1,
+            'EUR' => 1,
+            'USD' => 1.08,
+            'ZAR' => 20.0,
+            'date' => '2021-01-01',
+            'time' => '12:00:00',
+        ],
+        [
+            'id' => 2,
+            'EUR' => 1,
+            'USD' => 1.08,
+            'ZAR' => 20.0,
+            'date' => '2021-01-01',
+            'time' => '12:00:00',
+        ],
+        [
+            'id' => 3,
+            'EUR' => 1,
+            'USD' => 1.08,
+            'ZAR' => 20.0,
+            'date' => '2021-01-01',
+            'time' => '12:00:00',
+        ]
+
+    ];
+    return response()->json( $response, 200 );
+} );

@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Clients\FixerIo;
+use App\Http\Controllers\ExchangeRateController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get( '/exchange-rates/', function() {
-    return response()->json( FixerIo::getExchangeRates(), 200 );
-} );
+Route::get( '/exchange-rates/', [ ExchangeRateController::class, 'index' ] );
+

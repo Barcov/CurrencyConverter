@@ -7,5 +7,12 @@ export default defineNuxtConfig({
             tailwindcss: {},
             autoprefixer: {},
         },
-    }
+    },
+    modules: [
+        '@nuxt/test-utils/module',
+        '@pinia/nuxt',
+    ],
+    pinia: {
+        storesDirs: ['./stores/**'],
+    },
 })

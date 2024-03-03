@@ -1,4 +1,9 @@
 <script lang="js" setup>
+import {defineProps} from 'vue';
+import {useStore} from "~/stores/Store.js";
+
+defineEmits(['update:modelValue'])
+
 const props = defineProps({
   'selectName': {
     type: String,
@@ -8,11 +13,14 @@ const props = defineProps({
     type: String,
     default: 'From Currency'
   },
-  'currencies': {
-    type: Array,
-    default: () => ['USD', 'ZAR', 'EUR']
+  'modelValue': {
+    type: String,
+    required: true,
   }
 });
+
+const store = useStore();
+
 </script>
 
 <template>
@@ -23,14 +31,14 @@ const props = defineProps({
     >
       {{ props.label }}
     </label>
-
     <select
       id="{{ props.selectName }}"
       class="w-full h-14 md:h-10 md:w-20 p-2 rounded-lg bg-amber-50 border-amber-200 border-2 md:self-center"
-      name="from-currency"
+      name="selectName"
+      @change="$emit('update:modelValue', $event.target.value)"
     >
       <option
-        v-for="currency in props.currencies"
+        v-for="currency in store.getCurrencies"
         :key="currency"
         :value="currency"
       >

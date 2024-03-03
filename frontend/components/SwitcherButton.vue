@@ -1,9 +1,11 @@
-<script lang="js">
+<script lang="js" setup>
+const store = useStore();
 </script>
 
 <template>
   <button
     class="bg-amber-400 hover:bg-amber-300 text-white font-bold md:py-2 px-3 md:px-4 md:my-4 rounded-xl md:rounded drop-shadow-2xl w-20 md:w-15 lg:w-full h-20 md:h-10 lg:h-2/3 "
+    @click="store.switchToAndFromCurrencies"
   >
     <svg
       class="w-15 md:h-5 h-15 md:w-5 mx-auto stroke-[1.8] stroke-black fill-none"

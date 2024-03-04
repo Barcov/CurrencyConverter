@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class ExchangeRate extends Model {
     use HasFactory;
 
+    private static mixed $apiCacheTTL = 0;
     public $timestamps = true;
     protected $dates = [ 'created_at', 'updated_at' ];
     protected $fillable = [
@@ -17,6 +18,11 @@ class ExchangeRate extends Model {
         'USD',
         'ZAR'
     ];
+
+    public function __construct( array $attributes = [] ) {
+        parent::__construct( $attributes );
+        self::$apiCacheTTL = (int) config( 'services.fixerio.api_cache_ttl' );
+    }
 
     public static function getLatestRates() {
         $data = FixerIo::getExchangeRates();
@@ -31,11 +37,11 @@ class ExchangeRate extends Model {
     }
 
     public static function setShouldUpdate() {
-        Cache::add( 'exchange-rates:should-update', false, 20 );
+        Cache::add( 'exchange-rates:should-update-api', false, self::$apiCacheTTL );
     }
 
     public static function getShouldUpdate(): bool {
-        return Cache::get( 'exchange-rates:should-update' ) ?? true;
+        return Cache::get( 'exchange-rates:should-update-api' ) ?? true;
     }
 
 }

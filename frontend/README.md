@@ -46,30 +46,30 @@ The Frontend currently assumes your API server is running on `http://localhost:8
 
 When you visit the app you'll see the USD/ZAR exchange rate by default.
 
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/app.png)
+![](documentations/app.png)
 
 ### Update exchange rates
 
 You can refresh the page or click the refresh button to update the exchange rates.
 
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/refresh.png)
+![](documentations/refresh.png)
 
 Exchange rates will update based on your cache settings in the API `.env` file. By default each request will get
 fresh results from backend. See the API documentation in 'api' for more information.
 
 ### Select currenciesYou can select a base currency and a target currency.
 
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/select-from-currency.png)
+![](documentations/select-from-currency.png)
 
 Updated exchange rate between the two currencies will be displayed.
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/eurusd.png)
+![](documentations/eurusd.png)
 
 ### Invert currencies
 
 Sometimes you may select from and to currencies in the wrong oder. You can invert the currencies by clicking on the
 invert button.
 
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/invert-button.png)
+![](documentations/invert-button.png)
 
 The app will then display the exchange rate between the two currencies in the opposite direction.
-![](/home/barco/Documents/dev/interviews/ExchangeTracker/frontend/documentations/inverted-results.png)
+![](documentations/inverted-results.png)

@@ -32,6 +32,8 @@ return [
     ],
     'fixerio' => [
         'api_key' => env( 'FIXERIO_API_KEY', 'test' ),
+        'api_cache_ttl' => env( 'FIXERIO_API_CACHE_TTL', '0' ),
+        'db_cache_ttl' => env( 'FIXERIO_DB_CACHE_TTL', '0' ),
     ],
 
 ];

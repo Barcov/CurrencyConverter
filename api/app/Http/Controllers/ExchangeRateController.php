@@ -6,13 +6,10 @@ use App\Models\ExchangeRate;
 use Illuminate\Support\Facades\Cache;
 
 class ExchangeRateController extends Controller {
-    private static $cacheTTL = 0;
+    private static $dbCacheTTL = 0;
 
     public function __construct() {
-        $inProduction = ( 'production' === config( 'app.env' ) );
-        self::$cacheTTL = ( $inProduction )
-            ? 3600
-            : self::$cacheTTL;
+        self::$dbCacheTTL = (int) config( 'services.fixerio.db_cache_ttl' );
     }
 
     /**
@@ -23,7 +20,7 @@ class ExchangeRateController extends Controller {
             ExchangeRate::getLatestRates();
         }
 
-        $exchangeRate = Cache::remember( 'exchange-rates:data', self::$cacheTTL, function() {
+        $exchangeRate = Cache::remember( 'exchange-rates:data', self::$dbCacheTTL, function() {
             return ExchangeRate::latest( 'created_at' )
                 ->select( 'id', 'EUR', 'ZAR', 'USD', 'created_at' )
                 ->first();

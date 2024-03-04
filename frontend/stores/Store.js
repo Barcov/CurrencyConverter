@@ -3,8 +3,8 @@ import {defineStore} from 'pinia';
 export let useStore = defineStore('exchangeRates', {
     state() {
         return {
-            fromCurrency: 'ZAR',
-            toCurrency: 'USD',
+            fromCurrency: 'USD',
+            toCurrency: 'ZAR',
             exchangeRate: 0,
             inverseExchangeRate: 0,
             apiUpdating: true,
@@ -83,25 +83,6 @@ export let useStore = defineStore('exchangeRates', {
         getCurrencies(state) {
             return Object.keys(state.currencies);
         },
-
-        getDate(state) {
-            if ([] !== state.exchangeRates) {
-                console.log(state.exchangeRates)
-                return ''
-            }
-
-            const d = new Date(state.exchangeRates[0].date);
-            return d.getDay() + ' ' + d.toLocaleString('default', {month: 'short'}) + ' ' + d.getFullYear();
-        },
-
-        getTime(state) {
-            if ([] !== state.exchangeRates) {
-                console.log(state.exchangeRates)
-                return ''
-            }
-
-            return state.exchangeRates[0].time;
-        }
     },
 
 });
